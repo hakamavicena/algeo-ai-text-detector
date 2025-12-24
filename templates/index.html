@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Detector</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>AI Text Detector</h1>
+            <p class="subtitle">Linear Algebraic & Geometric Approach</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <h2>Analyze Text</h2>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showTab('text-tab')">
+                        Paste Text
+                    </button>
+                    <button class="tab-btn" onclick="showTab('file-tab')">
+                        Upload File
+                    </button>
+                </div>
+
+                <div id="text-tab" class="tab-content active">
+                    <textarea 
+                        id="text-input" 
+                        placeholder="Paste your text here (minimum 5 sentences)..."
+                        rows="10"
+                    ></textarea>
+                    <button class="analyze-btn" onclick="analyzeText()">
+                        Analyze Text
+                    </button>
+                </div>
+
+                <div id="file-tab" class="tab-content">
+                    <div class="file-upload">
+                        <input type="file" id="file-input" accept=".txt,.pdf,.docx">
+                        <label for="file-input">Choose file (TXT, PDF, DOCX)</label>
+                        <p id="file-name"></p>
+                    </div>
+                    <button class="analyze-btn" onclick="analyzeFile()">
+                        Analyze File
+                    </button>
+                </div>
+            </section>
+
+            <div id="loading" class="loading" style="display: none;">
+                <p>Analyzing text...</p>
+            </div>
+
+            <div id="error" class="error" style="display: none;"></div>
+
+            <section id="results" class="results" style="display: none;">
+                <h2>Results</h2>
+                
+                <div class="result-card" id="result-card">
+                    <h3>Classification: <span id="classification"></span></h3>
+                    <p>Confidence: <span id="confidence"></span></p>
+                </div>
+
+                <div class="metrics">
+                    <div class="metric">
+                        <h4>Effective Rank</h4>
+                        <p class="value" id="metric-rank"></p>
+                        <p class="threshold">Threshold: <span id="threshold-rank"></span></p>
+                    </div>
+                    
+                    <div class="metric">
+                        <h4>Total Variance</h4>
+                        <p class="value" id="metric-var"></p>
+                        <p class="threshold">Threshold: <span id="threshold-var"></span></p>
+                    </div>
+                </div>
+
+                <details class="details">
+                    <summary>Show Details</summary>
+                    <table>
+                        <tr>
+                            <td>Combined Score:</td>
+                            <td id="combined-score"></td>
+                        </tr>
+                        <tr>
+                            <td>Sentences:</td>
+                            <td id="n-sentences"></td>
+                        </tr>
+                        <tr>
+                            <td>Margin:</td>
+                            <td id="margin"></td>
+                        </tr>
+                        <tr>
+                            <td>Vote by Rank:</td>
+                            <td id="vote-rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Vote by Variance:</td>
+                            <td id="vote-var"></td>
+                        </tr>
+                    </table>
+                </details>
+
+                <div class="explanation" id="explanation"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Method: Ensemble (70% Effective Rank + 30% Total Variance)</p>
+            <p>Based on geometric text analysis • Institut Teknologi Bandung</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
