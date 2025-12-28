@@ -1,6 +1,6 @@
 # Linear & Geometric Algebraic AI Text Detector
 
-A transparent, interpretable AI text detection system based on **Linear Algebra** and **Geometric Topology**. Unlike black-box neural networks, this tool uses **Effective Rank** (intrinsic dimensionality) and **Total Variance** (semantic spread) to distinguish between human and AI-generated text.
+A transparent, interpretable AI text detection system based on **Linear Algebra** and **Geometric Topology**. Unlike black-box neural networks, this tool uses **Effective Rank** (intrinsic dimensionality) and **Total Variance** (semantic spread) to distinguish between human and AI-generated text. There is miswriting on paper, I do not make video for this project and sincerely apologize for the misunderstanding.
 
 ## Features
 * **Geometric Analysis:** Detects AI text using `Effective Rank` (a proxy for perplexity) and `Total Variance` (burstiness).
